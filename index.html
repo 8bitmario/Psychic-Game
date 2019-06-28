@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+</head>
+<body>
+    <h1>The Psychic Game</h1>
+    <p>Guess what letter I'm thinking of!</p>
+    <p id="winsstats"></p>
+    <p id="lossesstats"></p>
+    <p id="guessesleftstats"></p>
+    <p id="lettersalreadyguessed"></p>
+
+<script>
+
+/*  Determine a random letter for the computer.
+    Capture the user's keypress.
+    Determine if the user guessed correctly.
+    Update stats on the page.
+*/
+
+let wins = 0
+let losses = 0
+let guessesleft = 10
+
+let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+let computerChoice = letters[Math.floor(Math.random() * letters.length)]
+
+console.log(computerChoice)
+
+document.onkeyup = function (event) {
+    let userGuess = event.key;
+    if (userGuess === computerChoice) {
+        wins++
+    } else {
+        guessesleft--
+    }
+
+    if (guessesleft = 0) {
+        losses++
+    }
+}
+
+document.getElementById("winsstats").innerHTML = "Wins: " + wins
+document.getElementById("lossesstats").innerHTML = "Losses: " + losses
+document.getElementById("guessesleftstats").innerHTML = "Guesses Left: " + guessesleft
+
+</script>
+</body>
+</html>
